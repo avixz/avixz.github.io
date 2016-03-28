@@ -41,3 +41,32 @@ body {
     margin-right: auto;
     border-radius: 3px;
 }
+.thumb-bar {
+    padding: 0;
+    width: 240px;
+    background-color: red;
+    vertical-align: bottom;
+}
+.thumb-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.thumb-item {
+    display: inline;
+    float: left;
+}
+a.thumb-link:link, a.thumb-link:visited {
+    font-family: 'Racing Sans One';
+    font-size: 16px;
+    display: block;
+    width: 120px;
+    color: black;
+    background-color: white;
+    text-align: center;
+    text-decoration: none;
+}
+a.thumb-link:hover, a.thumb-link:active {
+    background-color: rgb(220, 220, 220);
+}
+
