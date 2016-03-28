@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+    background-color: #19A3FF;
+}
+
+/** thumbnail gallery **/
+.gallery {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 790px;
+    height: auto;
+}
+.thumb {
+    width: 240px;
+    height: 220px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 15px;
+    padding: 1px;
+    float: left;
+    background: white;
+    outline: rgb(0, 0, 0) solid thin;
+}
+.thumb-title {
+    text-align: center;
+    font-family: 'Racing Sans One';
+    font-size: 20px;        
+}
+.img-frame {
+    margin: 2px;
+    width: auto;
+    height: 165px;
+}
+.image {
+    display: block;
+    height: 165px;
+    width: auto;
+    max-width: 236px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 3px;
+}
