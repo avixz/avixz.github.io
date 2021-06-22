@@ -1,0 +1,23 @@
+/home/avixz/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/211.7442.42/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=/usr/bin/emcc -DCMAKE_CXX_COMPILER=/usr/bin/em++ -DPLATFORM=EMSCRIPTEN -s USE_SDL=2 -DCMAKE_CROSSCOMPILING_EMULATOR=/usr/bin/node -DCMAKE_TOOLCHAINN_FILE==/usr/share/emscripten/cmake/Modules/Platform/Emscripten.cmake -G "CodeBlocks - Unix Makefiles" /home/avixz/Documents/CLionProjects/untitled1
+-- The C compiler identification is Clang 11.0.1
+-- The CXX compiler identification is Clang 11.0.1
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/emcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/em++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+Using emscripten!
+-- Configuring done
+-- Generating done
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    CMAKE_TOOLCHAINN_FILE
+
+
+-- Build files have been written to: /home/avixz/Documents/CLionProjects/untitled1/cmake-build-debug-emscripten
