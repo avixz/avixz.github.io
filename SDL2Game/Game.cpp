@@ -73,6 +73,7 @@ void Game::processInput() {
            case SDL_FINGERDOWN:
                std::cout << "Touch event" << std::endl;
                m_paddleDir += 1;
+               break;
        }
     }
 
