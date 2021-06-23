@@ -70,6 +70,9 @@ void Game::processInput() {
            case SDL_QUIT:
                m_isRunning = false;
                break;
+           case SDL_FINGERDOWN:
+               std::cout << "Touch event" << std::endl;
+               m_paddleDir += 1;
        }
     }
 
