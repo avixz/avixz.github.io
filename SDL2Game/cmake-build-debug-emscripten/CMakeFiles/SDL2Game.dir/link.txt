@@ -1,1 +1,0 @@
-/usr/bin/em++  -DEMSCRIPTEN -s USE_SDL=2 -s USE_FREETYPE=1 -g  -DEMSCRIPTEN -s USE_SDL=2 -s USE_FREETYPE=1 CMakeFiles/SDL2Game.dir/main.cpp.o CMakeFiles/SDL2Game.dir/Game.cpp.o -o SDL2Game.html 

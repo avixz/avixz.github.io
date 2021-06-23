@@ -1,3 +1,0 @@
-/home/avixz/Documents/CLionProjects/untitled1/cmake-build-debug-emscripten/CMakeFiles/edit_cache.dir
-/home/avixz/Documents/CLionProjects/untitled1/cmake-build-debug-emscripten/CMakeFiles/rebuild_cache.dir
-/home/avixz/Documents/CLionProjects/untitled1/cmake-build-debug-emscripten/CMakeFiles/SDL2Game.dir
