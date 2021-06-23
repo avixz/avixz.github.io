@@ -64,6 +64,7 @@ void Game::doFrame() {
 //==============================================================================
 void Game::processInput() {
     SDL_Event event;
+    m_paddleDir = 0;
 
     while (SDL_PollEvent(&event)) {
        switch (event.type) {
@@ -76,8 +77,6 @@ void Game::processInput() {
                break;
        }
     }
-
-    m_paddleDir = 0;
 
     const Uint8* state = SDL_GetKeyboardState(NULL);
     if (state[SDL_SCANCODE_ESCAPE]) {
