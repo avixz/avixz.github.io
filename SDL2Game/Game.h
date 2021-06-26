@@ -35,6 +35,7 @@ private:
     bool m_isRunning;
     Vector2 m_paddlePos;
     Vector2 m_ballPos;
+    Vector2 m_ballVel;
     Uint32 m_ticksCount;
     float m_paddleDir;
 };

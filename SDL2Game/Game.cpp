@@ -5,9 +5,11 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_log.h>
 #include <SDL2/SDL_render.h>
-
-#include <iostream>
 #include "Game.h"
+
+const int s_ballThickness = 12;
+const int s_wallThickness = 15;
+const int s_paddleHeight = 90;
 
 //==============================================================================
 Game::Game() :
@@ -15,6 +17,7 @@ m_window(nullptr),
 m_isRunning(true),
 m_paddlePos(Vector2{20, 334}),
 m_ballPos(Vector2{612, 334}),
+m_ballVel(Vector2{-200.0f, 235.0f}),
 m_ticksCount(0)
 {}
 
@@ -109,34 +112,75 @@ void Game::updateGame() {
     // TODO: Update objects in the game world as function of deltaTime
     if (m_paddleDir != 0) {
         m_paddlePos.y += m_paddleDir * 300.0f * deltaTime;
+
+        // Make sure the paddle doesn't move off screen
+        if (m_paddlePos.y < (0.0f + s_wallThickness)) {
+            m_paddlePos.y = s_wallThickness;
+        }
+        else if ((m_paddlePos.y + s_paddleHeight) > (768.0f - s_wallThickness)) {
+            m_paddlePos.y = 768.0f - s_paddleHeight - s_wallThickness;
+        }
+    }
+    m_ballPos.x += m_ballVel.x * deltaTime;
+    m_ballPos.y += m_ballVel.y * deltaTime;
+    float diff = abs(m_ballPos.y - m_paddlePos.y);
+
+    // Bounce the ball against top wall
+    if (m_ballPos.y <= s_wallThickness && m_ballVel.y < 0.0f) {
+        m_ballVel.y *= -1;
+    }
+    // Bounce the ball against bottom wall
+    else if ((m_ballPos.y + s_ballThickness) >= (768.0f - s_wallThickness) && m_ballVel.y > 0.0f) {
+        m_ballVel.y *= -1;
+    }
+    // Bounce the ball against the right wall
+    else if ((m_ballPos.x + s_ballThickness) >= (1024.0f - s_wallThickness) && m_ballVel.x > 0.0f) {
+        m_ballVel.x *= -1;
+    }
+    // Bounce the ball against the paddle
+    else if (diff <= s_paddleHeight / 2.0f && m_ballPos.x >= 20.0f && m_ballPos.x <= 35.0f && m_ballVel.x < 0.0f) {
+        m_ballVel.x *= -1.0f;
     }
 }
 
 //==============================================================================
 void Game::generateOutput() {
-    const int thickness = 15;
     SDL_SetRenderDrawColor(m_renderer, 0, 0, 255, 255);
     SDL_RenderClear(m_renderer);
     SDL_SetRenderDrawColor(m_renderer, 255, 255, 255, 255);
-    SDL_Rect wall {
+    SDL_Rect wallTop {
         0, // Top left x
         0, // Top left y
         1024, // Width
-        thickness // Width
+        s_wallThickness // Width
+    };
+    SDL_Rect wallBottom {
+            0, // Top left x
+            768 - s_wallThickness, // Top left y
+            1024, // Width
+            s_wallThickness // Width
+    };
+    SDL_Rect wallRight {
+            1024 - s_wallThickness, // Top left x
+            0, // Top left y
+            s_wallThickness, // Width
+            768 // Width
     };
     SDL_Rect ball {
-            static_cast<int>(m_ballPos.x - thickness/2),
-            static_cast<int>(m_ballPos.y - thickness/2),
-            thickness,
-            thickness
+            static_cast<int>(m_ballPos.x - s_ballThickness),
+            static_cast<int>(m_ballPos.y - s_ballThickness),
+            s_ballThickness,
+            s_ballThickness
     };
     SDL_Rect paddle {
-        static_cast<int>(m_paddlePos.x - thickness/2),
-        static_cast<int>(m_paddlePos.y - thickness/2),
-        thickness,
-        thickness * 6
+        static_cast<int>(m_paddlePos.x - s_wallThickness/2),
+        static_cast<int>(m_paddlePos.y - s_wallThickness/2),
+        s_wallThickness,
+        s_paddleHeight
     };
-    SDL_RenderFillRect(m_renderer, &wall);
+    SDL_RenderFillRect(m_renderer, &wallTop);
+    SDL_RenderFillRect(m_renderer, &wallBottom);
+    SDL_RenderFillRect(m_renderer, &wallRight);
     SDL_RenderFillRect(m_renderer, &ball);
     SDL_RenderFillRect(m_renderer, &paddle);
     SDL_RenderPresent(m_renderer);
