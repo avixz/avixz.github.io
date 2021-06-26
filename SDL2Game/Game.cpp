@@ -24,13 +24,11 @@ bool Game::isRunning() {
 }
 //==============================================================================
 bool Game::initialize() {
-    std::cout << "Initializing SDL" << std::endl;
     int sdlResult = SDL_Init(SDL_INIT_VIDEO);
     if (sdlResult != 0) {
         SDL_Log("Unable to initialize SDL: %s", SDL_GetError());
         return false;
     }
-    std::cout << "Creating window" << std::endl;
     m_window = SDL_CreateWindow("Test window",
                                 100, // top left x-coordinate
                                 100, // top left y-coordinate
@@ -42,7 +40,6 @@ bool Game::initialize() {
         SDL_Log("Failed to create window: %s", SDL_GetError());
         return false;
     }
-    std::cout << "Creating renderer" << std::endl;
     m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     return true;
 }
@@ -71,9 +68,8 @@ void Game::processInput() {
            case SDL_QUIT:
                m_isRunning = false;
                break;
-           case SDL_FINGERDOWN:
-               std::cout << "Touch event" << std::endl;
-               m_paddleDir += 1;
+           case SDL_FINGERMOTION:
+               event.tfinger.dy > 0? m_paddleDir += 1: m_paddleDir -= 1;
                break;
        }
     }
