@@ -42,7 +42,7 @@ bool Game::initialize() {
     }
 
     // Prevent default events
-    SDL_EventState(SDL_FINGERDOWN, SDL_ENABLE);
+    SDL_EventState(SDL_FINGERMOTION, SDL_ENABLE);
 
     m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     return true;
