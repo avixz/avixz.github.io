@@ -40,6 +40,7 @@ bool Game::initialize() {
         SDL_Log("Failed to create window: %s", SDL_GetError());
         return false;
     }
+
     m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     return true;
 }
@@ -62,6 +63,7 @@ void Game::doFrame() {
 void Game::processInput() {
     SDL_Event event;
     m_paddleDir = 0;
+    SDL_EventState(SDL_FINGERMOTION, SDL_ENABLE);
 
     while (SDL_PollEvent(&event)) {
        switch (event.type) {
@@ -70,6 +72,7 @@ void Game::processInput() {
                break;
            case SDL_FINGERMOTION:
                event.tfinger.dy > 0? m_paddleDir += 1: m_paddleDir -= 1;
+               SDL_EventState(SDL_FINGERMOTION, SDL_IGNORE);
                break;
        }
     }
