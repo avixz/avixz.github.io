@@ -16,5 +16,6 @@ else()
     include_directories(${SDL2_INCLUDE_DIRS})
 endif()
 
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ..)
 add_executable(SDL2Game main.cpp Game.h Game.cpp)
 target_link_libraries(SDL2Game ${SDL2_LIBRARIES})
