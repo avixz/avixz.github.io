@@ -18,7 +18,6 @@ int main(int argc, char** argv) {
     Game game;
     bool success = game.initialize();
 
-    std::cout << "Before starting main loop" << std::endl;
     if (success)
     {
 #ifdef EMSCRIPTEN
