@@ -1,12 +1,11 @@
 cmake_minimum_required(VERSION 3.19)
-project(SDL2Game)
+project(Pong)
 
 set(CMAKE_CXX_STANDARD 17)
 
 if ("${PLATFORM}" STREQUAL "EMSCRIPTEN")
     message("Using emscripten!")
-    set(USE_FLAGS "-DEMSCRIPTEN -s USE_SDL=2 -s USE_FREETYPE=1 \
-                   --shell-file ../shell_minimal.html")
+    set(USE_FLAGS "-DEMSCRIPTEN -s USE_SDL=2 -s USE_FREETYPE=1 --shell-file ../shell_minimal.html")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${USE_FLAGS}")
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${USE_FLAGS}")
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${USE_FLAGS}")
@@ -17,5 +16,5 @@ else()
 endif()
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ..)
-add_executable(SDL2Game main.cpp Game.h Game.cpp)
-target_link_libraries(SDL2Game ${SDL2_LIBRARIES})
+add_executable(Pong main.cpp Game.h Game.cpp)
+target_link_libraries(Pong ${SDL2_LIBRARIES})
