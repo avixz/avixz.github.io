@@ -10,12 +10,12 @@ loadingManager.onProgress = (url) => {
   console.log("Loading file: ", url);
 };
 const textureLoader = new THREE.TextureLoader(loadingManager);
-const doorColorTexture = textureLoader.load("/textures/door/color.jpg");
-const matcapTexture = textureLoader.load("/textures/matcaps/1.png");
+const doorColorTexture = textureLoader.load("HelloThreeJs/dist/textures/door/color.jpg");
+const matcapTexture = textureLoader.load("HelloThreeJs/dist/textures/matcaps/1.png");
 
 // Fonts
 const fontLoader = new FontLoader(loadingManager);
-fontLoader.load("/fonts/helvetiker_regular.typeface.json", (font) => {
+fontLoader.load("HelloThreeJs/dist/fonts/helvetiker_regular.typeface.json", (font) => {
   const textGeometry = new TextGeometry("Hello, Three.js!", {
     font: font,
     size: 0.5,
