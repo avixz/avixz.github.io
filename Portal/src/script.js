@@ -1,19 +1,21 @@
-import GUI from "lil-gui";
+//import GUI from "lil-gui";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 import firefliesVertexShader from "./shaders/fireflies/vertex.glsl";
 import firefliesFragmentShader from "./shaders/fireflies/fragment.glsl";
+import portalVertexShader from "./shaders/portal/vertex.glsl";
+import portalFragmentShader from "./shaders/portal/fragment.glsl";
 
 /**
  * Base
  */
 // Debug
 const debugObject = {};
-const gui = new GUI({
-  width: 400,
-});
+//const gui = new GUI({
+//  width: 400,
+//});
 
 // Canvas
 const canvas = document.querySelector("canvas.webgl");
@@ -53,8 +55,29 @@ const bakedMaterial = new THREE.MeshBasicMaterial({
 });
 const poleLightMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
 
+debugObject.portalColorStart = "#000000";
+debugObject.portalColorEnd = "#dddddd";
+
+//gui.addColor(debugObject, "portalColorStart").onChange(() => {
+//  portalLightMaterial.uniforms.uColorStart.value.set(
+//    debugObject.portalColorStart
+//  );
+//});
+//
+//gui.addColor(debugObject, "portalColorEnd").onChange(() => {
+//  portalLightMaterial.uniforms.uColorEnd.value.set(debugObject.portalColorEnd);
+//});
+
 // Portal light material
-const portalLightMaterial = new THREE.MeshBasicMaterial({ color: 0xffffe5 });
+const portalLightMaterial = new THREE.ShaderMaterial({
+  uniforms: {
+    uTime: { value: 0 },
+    uColorStart: { value: new THREE.Color(debugObject.portalColorStart) },
+    uColorEnd: { value: new THREE.Color(debugObject.portalColorEnd) },
+  },
+  vertexShader: portalVertexShader,
+  fragmentShader: portalFragmentShader,
+});
 
 /**
  * Model
@@ -122,12 +145,12 @@ const firefliesMaterial = new THREE.ShaderMaterial({
   depthWrite: false,
 });
 
-gui
-  .add(firefliesMaterial.uniforms.uSize, "value")
-  .min(0)
-  .max(500)
-  .step(1)
-  .name("firefliesSize");
+//gui
+//  .add(firefliesMaterial.uniforms.uSize, "value")
+//  .min(0)
+//  .max(500)
+//  .step(1)
+//  .name("firefliesSize");
 
 // Points
 const fireflies = new THREE.Points(firefliesGeometry, firefliesMaterial);
@@ -193,9 +216,9 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
 debugObject.clearColor = "#201919";
 renderer.setClearColor(debugObject.clearColor);
-gui.addColor(debugObject, "clearColor").onChange(() => {
-  renderer.setClearColor(debugObject.clearColor);
-});
+//gui.addColor(debugObject, "clearColor").onChange(() => {
+//  renderer.setClearColor(debugObject.clearColor);
+//});
 
 /**
  * Animate
@@ -206,6 +229,7 @@ const tick = () => {
   const elapsedTime = clock.getElapsedTime();
 
   // Update materials
+  portalLightMaterial.uniforms.uTime.value = elapsedTime;
   firefliesMaterial.uniforms.uTime.value = elapsedTime;
 
   // Update controls
