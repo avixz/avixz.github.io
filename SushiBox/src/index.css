@@ -1,0 +1,29 @@
+html,
+body,
+#root
+{
+  position: fixed;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.docs
+{
+    position: fixed;
+    border: none;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 95%;
+    /* pointer-events: none; */
+}
+
+.docsButton
+{
+    position: fixed;
+    bottom: 1%;
+    right: 1%;
+}
