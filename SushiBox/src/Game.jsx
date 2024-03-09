@@ -7,7 +7,7 @@ import Plate from "./Plate";
 import Wip from "./Wip";
 
 export default function Game() {
-  const [showWip, setShowWip] = useState(true);
+  const [showWip, setShowWip] = useState(false);
   const toggleWip = () => setShowWip(!showWip);
 
   return (
