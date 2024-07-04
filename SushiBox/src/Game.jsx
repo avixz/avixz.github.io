@@ -4,6 +4,7 @@ import { OrbitControls } from "@react-three/drei";
 import { Perf } from "r3f-perf";
 import Sushi from "./Sushi";
 import Plate from "./Plate";
+import Chopsticks from "./Chopsticks";
 import Wip from "./Wip";
 
 export default function Game() {
@@ -22,7 +23,7 @@ export default function Game() {
 
         <Sushi />
         <Plate />
-        <Plate />
+        <Chopsticks />
       </Canvas>
       <Wip show={showWip} toggle={toggleWip} disabled />
     </>
