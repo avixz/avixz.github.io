@@ -1,4 +1,4 @@
-export default function Wip({ show, toggle }) {
+export default function Wip({ show, toggle, disabled }) {
   return (
     <>
       {show && (
@@ -6,9 +6,11 @@ export default function Wip({ show, toggle }) {
           <iframe className="docs" src="./docs.html" />
         </div>
       )}
-      <button className="docsButton" onClick={toggle}>
-        WIP
-      </button>
+      {disabled || (
+        <button className="docsButton" onClick={toggle}>
+          WIP
+        </button>
+      )}
     </>
   );
 }

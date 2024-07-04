@@ -22,8 +22,9 @@ export default function Game() {
 
         <Sushi />
         <Plate />
+        <Plate />
       </Canvas>
-      <Wip show={showWip} toggle={toggleWip} />
+      <Wip show={showWip} toggle={toggleWip} disabled />
     </>
   );
 }
