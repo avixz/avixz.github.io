@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    h1 {font-size: 1.2rem}
+  </style>
+</head>
+<body>
+  <h1>Setup</h1>
+    <h2>
+      With Vite:
+    </h2>
+    <input type="checkbox"/> Make a vite.js project
+    <p>
+      <pre>
+        npm create vite@latest
+      </pre>
+    </p>
+    <input type="checkbox"/> Install React Three
+    <p>
+      <pre>
+        npm install three @react-three/fiber
+      </pre>
+    </p>
+    <input type="checkbox"/>Add a style file in src/index.css
+    <p>
+      <pre>
+        html,
+        body,
+        #root
+        {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+        }
+      </pre>
+    </p>
+    <input type="checkbox"/>Create your cool App inside a file called src/App.jsx
+    <p>
+      <pre>
+        import { Canvas } from "@react-three/fiber";
+
+        function App() {
+          return (
+            &lt;&gt;
+              &lt;Canvas&gt;
+                &lt;mesh&gt;
+                  &lt;torusKnotGeometry /&gt;
+                  &lt;meshNormalMaterial /&gt;
+                &lt;/mesh&gt;
+              &lt;/Canvas&gt;
+            &lt;/&gt;
+          );
+        }
+
+        export default App;
+      </pre>
+    </p>
+    <input type="checkbox"/>Enjoy!
+    <p>
+      <pre>
+        npm install
+        npm run dev
+      </pre>
+    </p>
+    <h2>
+      From Scratch:
+    </h2>
+    <input type="checkbox"/> Make a node.js project
+    <p>
+      <pre>
+        mkdir CoolProject
+        cd CoolProject
+        npm init -y
+      </pre>
+    </p>
+    <input type="checkbox"/>Install React and React Three
+    <p>
+      <pre>
+        npm install react react-dom react-scripts three @react-three/fiber
+      </pre>
+    </p>
+    <input type="checkbox"/>Add dev and build scripts to package.json
+    <p>
+      <pre>
+        "scripts" : {
+          "dev": "react-scripts start",
+          "build": "react-scripts build"
+        }
+      </pre>
+    </p>
+    <input type="checkbox"/>Make a public folder with an index.html
+    <p>
+      <pre>
+
+        &lt;!-- just write "html:5" if you are using vscode --&gt;
+
+        &lt;!DOCTYPE html&gt;
+        &lt;html lang="en"&gt;
+        &lt;head&gt;
+          &lt;meta charset="UTF-8"&gt;
+          &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+          &lt;title&gt;Document&/title&
+        &lt;/head&gt;
+        &lt;body&gt;
+          
+        &lt;/body&gt;
+        &lt;/html&gt;
+
+      </pre>
+    </p>
+    <input type="checkbox"/>Add a div to the body to contain our React app
+    <p>
+      <pre>
+        &lt;body&gt;
+          &lt;div id="root"/&gt;
+        &lt;/body&gt;
+      </pre>
+    </p>
+    <input type="checkbox"/>Make an src folder with an index.js
+    <p>
+      <pre>
+        import ReactDOM from "react-dom/client";
+        import App from "./App";
+
+        ReactDOM.createRoot(document.getElementById("root")).render(&lt;App /&gt;);
+      </pre>
+    </p>
+    <input type="checkbox"/>Add a style file in src/index.css
+    <p>
+      <pre>
+        html,
+        body,
+        #root
+        {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+        }
+      </pre>
+    </p>
+    <input type="checkbox"/>Create your cool App inside a file called src/App.jsx
+    <p>
+      <pre>
+        import { Canvas } from "@react-three/fiber";
+
+        function App() {
+          return (
+            &lt;&gt;
+              &lt;Canvas&gt;
+                &lt;mesh&gt;
+                  &lt;torusKnotGeometry /&gt;
+                  &lt;meshNormalMaterial /&gt;
+                &lt;/mesh&gt;
+              &lt;/Canvas&gt;
+            &lt;/&gt;
+          );
+        }
+
+        export default App;
+      </pre>
+    </p>
+    <input type="checkbox"/>Enjoy!
+    <p>
+      <pre>
+        npm install
+        npm run dev
+      </pre>
+    </p>
+</body>
+</html>
