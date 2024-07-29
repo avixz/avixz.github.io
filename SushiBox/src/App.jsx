@@ -7,7 +7,7 @@ import Plate from "./Plate";
 import Chopsticks from "./Chopsticks";
 import Wip from "./Wip";
 
-export default function Game() {
+export default function App() {
   const [showWip, setShowWip] = useState(false);
   const toggleWip = () => setShowWip(!showWip);
 
