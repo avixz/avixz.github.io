@@ -27,6 +27,81 @@
       Using the inset tool make a inner circle in the bottom part of the tree and extrude it to form the trunk, make one loop cut and adapt the shape. To give some randomness select the the outer loop cuts from the body of the tree and with proporcional editing activated rotate along the z axis.
     </p>
   </li>
+  <li>
+    Rocks <input type="checkbox" checked onClick="return false;" />
+    <p>
+      Loop cut a box on the x and y axis, and scale it on the z axis so it has four parts and the height of half a rock. Select three of the top faces and extrude them to a full rock height. Move some vertices with proportional editing activated to git it the form of a rock, bevel some vertices with ctrl + b and then v to enable vertex beveling, edge slide (g + g) is also useful.
+    </p>
+    <p>
+      For a second rock loop cut a box on the x and y axis with 2 loop cuts each (mousewheel). Scale it in the z axis so it has nine parts and the height of half the rock and follow the same procedure as before.
+    </p>
+  </li>
+  <li>
+    Dead Pine Tree <input type="checkbox" checked onClick="return false;" />
+    <p>
+      Add a plane, tab into edit mode select all vertices and merge at center so we have a single vertex. Go to the side view and extrude the vertex, put the second vertex all the way up the full height of the tree (e.g: 4 meters). Loop cut 9 new vertices and scale them in groups of three so they are close together, then select the first vertex in each of the group of three, go to the top view and extrude two times diagonally. Do the same with the other ones to have tree branches in different diagonal directions.
+    </p>
+    <p>
+      To get the pine tree shape select all the vertices from the upper branches and scale them so they are smaller, do the same with the middle branches scaling them medium and the bottom branches scaling them big. Select the outer vertices in all the branches, enable proportional editing grab them and move them up in the z axis, to get the branches pointing upwards. Switch smooth falloff to random and do it again so there is a bit of randomness. Select all the vertices in the upper cluster vertices and from the top view rotate them around the z axis, do the same with the other clusters so they are not under each other when looking from the top view. Do some manual adjustments if needed.
+    </p>
+    <p>
+      Add the skin modifier, it depends on the vertex radious located in the object data (n menu) but it can also be changed by selecting all vertices and pressing ctrl + a. To make branches thinner in the tips select only the edge vertices in all the branches and with proportional editing change the vertex radious. Add a decimate modifier to simplify the geometry, if vertices are to close together separate them a bit to obtain better results.
+    </p>
+  </li>
+  <li>
+    Terrain <input type="checkbox" checked onClick="return false;" />
+    <p>
+      Start with a plane and scale it to 8x8 squares, subdivide it 4 times from the vertex contextual menu to get 16x16 smaller squares. Extrude the upper part to get some thickness on the terrain, then with wireframe view select the three rightmost vertices and scale them down on the z axis to have a step where the river will be. Hide the bottom vertices selecting them and pressing h, that way they will not be affected by the subsequent modifications that will be done with proportinal editing.
+    </p>
+    <p>
+      Create some terrain bumps grabbing a random vertex with proportional editing on and moving it on the z axis. Also move some vertices from the border near the river with the same technique, but this time in the x axis to get some curved terrain in the border. The same can be done with several vertices selected, selecting one and then ctrl+click on another one will select all vertices in between. Now change the falloff to random and with proportional editing on grab some random vertices to make the terrain more irregular.
+    </p>
+    <p>
+      Finally select all and ont he face contextual menu click on "triangulate faces", this will give a more interesing terrain, now the hidden vertices can be unhidden with Alt + H. Flatten some terrain to form a road, with the round vertex selection paint a road and make it flat scaling it to 0 in the z axis, with the average medium point selected (the default one).
+    </p>
+  </li>
+  <li>
+    Water <input type="checkbox" checked onClick="return false;" />
+    <p>
+      Start with a cube, from the tab view scale it on the y axis so it goes all the way along the terrain, but ends a little bit before the edge (use ctrl for grid snapping). Grab it and put it on the terrain step that we made for the river, from the front side adjust the shape so it goes from a little inside the terrain on the bottom to where you want the water surface to be, check the results from the solid view.
+    </p>
+    <p>
+      We will use the displacement modifier to make some water like surface. First select the top face and do 3 loop cuts so we have four cubes instead of one rectangle, now that the shape is even we can subdivide the top faces 4 times to have more geometry for the displacement modifier. Create a vertex group with all the top faces but leave the outer border unselected so it is not affected by the modifier, hold ctrl and press minus to shrink selection so the border is unselected create the vertex group and assign the faces to the group. The result can be seen by pressing the select button on the vertex group.
+    </p>
+    <p>
+      In object mode apply the displacement modifier from the deform category, select the vertex group in the modifier. Create a new texture on the modifier and call it Surface, press the rightmost icon to access the texture settings. Change type to clouds, play with the settings to get a water like surface (e.g. size: 0.6), go back to the modifier and also play with its settings (e.g. strength: 0.5). For a more interesting geometry select the vertex group and triangulte faces from the face menu.
+    </p>
+  </li>
+  <li>
+    Road <input type="checkbox" checked onClick="return false;" />
+    <p>
+      Select the terrain and tab into edit mode, with the faces that will form the road selected duplicate them with shift + d. Now we have overlapping faces with them selected select separate selected from the mesh menu and they will be placed under a new object. Select all faces and extrude them on the z axis to give the road some thickness. In edge mode select one by one the edges on the side of the road and move them on the x and y axes with shift + z to give the edges of the road an irregular (ragged) look.
+    </p>
+      To make the lines of the road select the 3d cursor and click on the surface of the road to move it there, add a plane and scale it on the x and y to create a road line. Add the array modifier to the line in object mode, set the x value to 0, y to 2 and count to 5 to get 5 lines, from the top view move the lines to a good looking place in the road. Give the lines some volume with the solidify modfier with thickness to -0.005.
+    <p>
+    </p>
+  </li>
+  <li>
+    Scene Layout <input type="checkbox" checked onClick="return false;" />
+    <p>
+      Start with the rocks, first add them to a "Rocks" collection. We have two different rocks, we can get many variations from them by duplicating with Alt + D and rotating them with R + R, or rotating them on the z axis. Expose a different part of the rock each time to get the variations. Move them into position with the snapping activated and the options: snap to face, snap individual elements to face project and align rotation to target, moving them on the xy plane avoiding the z is also useful (shift + z). Try to make clusters of a big rock with several smaller rocks near as that is pleasing to the eye.
+    </p>
+    <p>
+      Add another collection with the Trees and place them using the same techniques, as the origin of the tree is on the bottom of the trunk it snapping to the terrain will work. If there is a gap from the base of the tree to the terrain when snapping edit the tree select all the geometry and move a little bit down on the z axis, that way thre will always be a bit of trunk inside the terrain when snapping. Also place some dead trees and one of them fallen across the road.
+    </p>
+  </li>
+  <li>
+    Materials <input type="checkbox" checked onClick="return false;" />
+    <p>
+      Switch to the lookdev mode to be able to see the materials, it uses eeve rendering engine by default. Clicking the lookdev mode there is some options like different light conditions (environment maps), and the possiblility to use the scene and world light (we don't have any) instead of the HDRI.
+    </p>
+    <p>
+      Click the ground and in the materials tab add a new material called "Ground" and assign some ground like base color, do the same with the rocks, road and road lines. For the trees we will use two materials, first add a trunk like material for the whole tree. Now in edit mode select the tip of the tree with face select and drawing a selection rectangle and then expand the selection with ctrl + plus until the whole green part of the tree is selected. Create a new material and assign it to those faces and then select some green like base color.
+    </p>
+    <p>
+      For the water we will use a Principled BSDF shader and adjust its parameters. First add some blue base color and adjust the roughness 0 is completely smooth with reflections and 1 completely rough with 0 reflections, 0.15 is a good value for the water. Now adjust transmission which is the translucency of the material to 0.9 eeve is does not show translucency but we will see it later in cycles render engine. Finaly change the IOR that is a physics constant that determines the refraction and we will use the physical value for water which is 1.333.
+    </p>
+  </li>
 </ul>
 </body>
 </html>
