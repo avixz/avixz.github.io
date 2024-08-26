@@ -7,6 +7,8 @@ function App() {
   return (
     <>
       <Canvas camera={{ position: [4, 5, 7] }}>
+        <color attach="background" args={[0.05, 0.05, 0.05]} />
+
         <OrbitControls minPolarAngle={0} />
         <OrbitControls maxPolarAngle={Math.PI / 3} />
 

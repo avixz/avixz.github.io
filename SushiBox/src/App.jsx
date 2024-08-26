@@ -16,6 +16,8 @@ export default function App() {
       <Canvas camera={{ position: [4, 5, 7] }}>
         {showWip && <Perf position="top-left" />}
 
+        <color attach="background" args={[0.05, 0.05, 0.05]} />
+
         <OrbitControls makeDefault />
 
         <directionalLight position={[1, 2, 3]} intensity={3.5} />
