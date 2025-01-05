@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    h1 {font-size: 1.2rem}
+  </style>
+</head>
+<body>
+  <h1>Concept</h1>
+  <p>
+    TBD
+  </p>
+  <h1>Scope</h1>
+  <ul>
+  <li>
+    Ruins <input type="checkbox" checked onClick="return false;" />
+    <p>
+      Start adding a plane of 8x8 units, this will be the ground. Add a new plane that we will extrude to form the structure, move its edges from the top view so they extend occupying the uper left cuadrant of the ground but stopping a bit before the edges. Extrude the structure 1.5 units on the z, add a cross with two loopcuts and extrude the face where the stairs will be 1.5 units. Select the four top faces (not the one where the stairs will be) and extrde them 0.2 units on the x.
+    </p>
+    <p>
+      To make the tunnel where the water will be first select the face and press "i" to inset a little border, then go to the side view in wireframe view and extrude the face -3.4 units on the y axis. Go back to solid view, we need to open the bottom part of the tunnel select the bottom and front faces of the tunnel and delete the faces. To clean up the result grab the inner loop cut and move -0.1 in the z until it touches the ground. Delete the two remaining bottom faces of the tunnel.
+    </p>
+    <p>
+      Make two loopcuts over the tunnel and scale them so they form a border, select all the top faces but the ones over the tunnel and the one over the stairs including this new border extrude them up 0.2 units. This will form a canal where the river will be. Deactivate the ground and go to the bottom part of the tunnel and select the loopcut to close it by making a face pressing "f", it will be an ngon but we won't be doing further manipulations with it so it doesn't matter.
+    </p>
+  </li>
+  <li>
+    Stairs <input type="checkbox" checked onClick="return false;" />
+    <p>
+      Add a plane and snap it to the edge where the stairs will start, from the top view give it the shape of one step of 0.2 units of width. Move the plane on the z axis as it will be the upper face of the step, extrude the outer edge down 0.2 so it touches the ground, we now have two faces in an L shape forming the step.
+    </p>
+    <p>
+      Use the array modifier to form the stairs, with relative x axis -1 and relative z axis 1 and a count of 8. Apply the modifier to get the geometry for the whole staircase. We need to cleanup as now there are double vertices where the steps connect, do a mesh > merge > by distance to clean those duplicated vertices.
+    </p>
+    <p>
+      Select the edge at the top of the staircase and extrude it downwards so it touches the ground -1.6 units. Now we need to close the rest of the geometry of the stair, select the new edge we have extruded and the edge of the first step and press f to fill the bottom of the staircase with a face. Do the same with the left and right sides of the staircase by selecting the vertex loop and pressing f. Adjust the scale of the staircase so it fits with the ruins and apply the scale if necessary.
+    </p>
+  </li>
+  <li>
+    Detailing <input type="checkbox" checked onClick="return false;" />
+    <p>
+      Go to the top view and enable the wireframe view, then enable the knife tool with the "k" key. We will subdivide the geometry by making four knife cuts slightly diagonal. One horizontal from the upper right corner to the left side, before cutting press "c" to enable cut through and then confirm with intro. Another horizontal slightly diagonal cut from the left side to the right through the middle of the stairs. Then one verticul cut from the upper left to the bottom, and a last cut through the middle of the water canal also slightly diagonal.
+    </p>
+    <p>
+      Move down the vertices in the middle of the canal to make the canal shape, and move the vertices individually to introduce some variation. Make a loopcut at medium height of the structure to get even more geometry, scale this loopcut a little bit down. To make single vertices in the ground move them on the xy plane by pressing shift + z, another technique is to edge slide the vertices with g + g.
+    </p>
+    <p>
+      Now make some bevels on edges with ctrl + b, and move their edges with edge slide, also bevel vertices with ctrl + b and then "v". If you bevel a vertex that is not a corner you will end up with an ngon, to fix it either delete the face and fill with to triangles or select face and the triangulate faces option from the face menu.
+    </p>
+    <p>
+      To detail the stairs make two vertical loop cuts in the middle, select one vertex in the middle right of the stairs and with proportional edition move it outside a little on the x axis. Move a vertex in the middle left of the stairs a little inside on the x axis. Now change the falloff of proportional editing to random and increase the radious of effect and repeat the same vertex movement to introduce some randomness in the stairs. Make some details also in the stairs with the previous techniques of bevel and moving vertices.
+    </p>
+  </li>
+  <li>
+    Pillars <input type="checkbox" checked onClick="return false;" />
+    <p>
+      Put the 3d cursor on the platform where the stairs begin and add a plane that will be our pillar, scale it down and extrude it up to form a pillar. To make an interesting top extrude the top face and scale it a bit wider than the column, then extrude it again up. Slice the pillar with two loop cuts, move some vertices and do some bevels with the same techniques used for the other stone structures.
+    </p>
+    <p>
+      Now put the cursor in the free space near the canal, we will make a 3 stone structure with two pillars and a bit horizontal one on the top. Create the first pillar and shift + d to duplicate it for the second pillar, rotate it on the z axis 90 degrees and add some variation. For the top pillar add a plane on the top of one of the pillars and scale it so it spans across both of the pillars, then extrude it up to form the pillar and give it some details with the usual techniques. Link duplicate one of the vertical pillars with shift + d and rotate it -90 degrees on the y axis an on the z axis to set it diagonally near the existing vertical pillar, position it from the top view.
+    </p>
+    <p>
+      Add a cube near the stairs and shape it like a big cubic rock and move its origin to its bottom, duplicate it with shift + d and scale it down to form a second smaller one and a third time to have an even smaller one. From the top view form a cluster with the three rocks and give them some details as usual.
+    </p>
+  </li>
+  <li>
+    Palm Tree <input type="checkbox" checked onClick="return false;" />
+    <p>
+      Start with a cyllinder with 8 sides, move it up 1 unit in the edit mode to have its origin at the bottom, and scale it down in object mode to the aproximate thickness of a tree trunk and apply the scale. Now scale down the bottom vertex loop to have the shape of a palm tree segment.
+    </p>
+    <p>
+      Add a bezier curve that we will use to curve the trunk, rotate on the y axis -90 degrees in object mode so modifiers added afterwards work. Grab the bottom point, rotate it to make a straight line and move it to the base of the palm segment. Add an array modifier with 10 segments and adjust its parameters to form the palm tree trunk, from the side view select the top point of the curve and put it on the top of the trunk. Now add a deform curve modifier and select the curve, now give a slight curvature to the trunk by moving the top point of the curve a little on the y axis and rotating a bit the point. Parent the curve to the object by selecting first the curve, then the palm tree and in the object menu parent to object. Now we want the segments to be gradually smaller, to do this apply the array modifier and select the top face of the trunk and scale it down with proportional editing active.
+    </p>
+    <p>
+      To make a leaf add a plane and from the view menu enter local view, subdivide the plane with 5 horizontal loop cuts and one vertical one. Select all vertices and scale them to the width of a leaf, select the top three and scale them down on the x axis with proportional editing active to make a leaf shape and do the same with the three bottom vertices. Add a cut to the leaf by moving one of the vertices with the Rip Region tool. Give some 3d shape by grabing one of the middle vertices with proportional editing and moving it up on the z axis. Go to the side view, select all vertices and move them so the base of the leaf is on the origin also add a solidify modifier to give it some thickness.
+    </p>
+    <p>
+      Exit the local view and select the top point of the curve, snap the 3d cursor to the selection and then select the leaf and snap it to the 3d cursor. Now from the top view duplicate the leaf with alt + d and press r to rotate, repeat until you have a 5 leaf star shape. Now we will make a second star of leafs on the top, duplicate one of the existing ones alt + d and press r to enable rotation and x twice to rotate on the leaf local x axis, move it up a little. Now from the top view make another star shape filling the gaps between the existing leafs, resize the leafs individually and rotate them on its local axis by pressing r twice to give some variation. Select all the leafs and then the trunk and parent them to the trunk with parent to object.
+    </p>
+  </li>
+  <li>
+    Chipped Rock <input type="checkbox" checked onClick="return false;" />
+    <p>
+      Start with a cube scale it on the z axis to, subdivide it and scale the center vertices that are directly in the x and y axis to form a thicker middle. Also scale the top and bottom vertices, now use the usual techniques to give form to the rock. Move individual vertices with random proportional editing, make some vertex bevels with ctrl + b and v and edge slide with g + g.
+    </p>
+  </li>
+  <li>
+    Tiles <input type="checkbox" checked onClick="return false;" />
+    <p>
+      Add a cube, scale it to aprox half a unit of side and scale it again on the z axis to make it the thickness of a tile. Make a loopcut, select one edge and move it down a little on the z axis to make a slope and also bevel the four top corners in different ways.
+    </p>
+    <p>
+      Activate snapping, face project and align rotation to target. Place the tile in the ruins surface and duplicate with alt + d to form clusters of tiles, then scale and rotate some of them 90 degrees to introduce variation.
+    </p>
+  </li>
+  <li>
+    Terrain <input type="checkbox" checked onClick="return false;" />
+    <p>
+      Select the ground and extrude it down on the edit mode to give it some diorama style thickness. When extruding down the normals are messed up, check it by activating the normal faces overlay activate wireframe to see that they are pointing inside. To correct this select all and in the mesh menu select recalculate normals outside, check that they are now pointing out and deactivate the overlay.
+    </p>
+    <p>
+      Hide the bottom vertices selecting them and pressing h so they are not affected by further modifications. Subdivide four times to get more geometry in the floo and go to the local view. Face select a vertical section composed of the four middle faces where the canal is located and extrude them down to form the canal, remove the front and back faces so the canal is open, also remove the remaining edges. Unhide the rest of the geometry and fill the holes selecting the edge loops and pressing f to fill them with an ngon.
+    </p>
+      Hide the bottom part of the terrain again and go out of the local view to see the whole scene, in the edit mode select the side faces of the canal and move them on the x axis to adjust the canal width. Go to vertex select and make some irregular terrain, first making big bumps moving them on the z axis with smooth proportional editing and then making some smaller variation with random falloff. Do the same with the canal borders buth by making some zigzag edge by moving vertices on the x axis, also select the bottom side edges and move them on the x axis to make a slope. Select all the terrain and triangulate faces as the terrain looks better when composed by triangles.
+    <p>
+  </li>
+  <li>
+    Objects Layout <input type="checkbox" checked onClick="return false;" />
+    <p>
+      Layout the rocks in clusters with the usual techniques, alt + d to duplicate, g and shift + z to move on the xy plane, r or rr to rotate, etc... Do the same with the palm trees using the trunk to move the palm tree as the leaves are parented to it.
+
+      Make some plants by reusing the palm leaves, to do this select the full palm with select hierarchy on the collection browser and control click the trunk to remove it from the selection. Alt duplicate the leaves and select clear parent and keep transformations so the leaves are not parented to the trunk anymore but their origin is not reset to the world origin. With all the leaves selected shift click in one of them and parent the rest of them to this las leave, use it to layout the plants with the usual techniques.
+    </p>
+  </li>
+  <li>
+    Water <input type="checkbox" checked onClick="return false;" />
+    <p>
+      Select the 3d cursor and click on the center of the top canal to set the cursor and add a plane, grab the top two edges and move them on the y axis almost to the edge. Do the same with the bottom two vertices but go over the edge aproximately two squares as this will be the width of the waterfall. Make a horizontal loop cut and move it to the bottom edge to separate the waterfall from the main water, now select all vertices and extrude them up to give the water some thickness.
+    </p>
+    <p>
+      Extrude down the bottom face on the part that went over the bottom edge to form the waterfall, we will use a display modifier for the water but it will need more geometry. Make 13 (so we have a middle one) sections on the water with vertical loop cuts, from the top view make horizontal loop cuts until they form squares and do the same in the waterfall. From the side view with vertex select drag a selection on the upper vertices of the water surface on the canal and then add the ones from the waterfall also with shift. Create a new vertex group and assign the vertices, also triangulate the faces. Tab out and add the display modifier, select the vertex group and add a texture with type clouds size 0.2 and in the modifier strength of 0.05.
+    </p>
+    <p>
+      Add a plane for the river under the canal and we can subdivide it to have more geometry until we have squeares, but for the subdivision to work we need to first loop cut it so it is composed by square sections. Add a displace modifier assigning the texture created before but this time give the modifier a strength of 0.1 as this part of the water is under the waterfall and would have more movement.
+    </p>
+  </li>
+  <li>
+    Vines <input type="checkbox" checked onClick="return false;" />
+    <p>
+      For the vines we will need a leaf and a particle system, select one of the leaves and do a full duplicate with shift + d and clear the parent. Enter local view and reset the position and rotation and remove the solidify modifier as otherwise we would have too much geometry, from the top view in edit mode change the pivot point to 3d cursor and scale down a little the leaf on the y axis then shift + d and r to create a copy and rotate so we have three leafs in a star shape. From the side rotate the leafs up using the cursor pivot point so every part of them is above the y axis, the different leafs can be selected using the l key for selecting linked. When objects are instantiated with the particle system the normal aligns with the y axis so we will rotate the geometry so its outside is aligned with the y axis, also scale down the size to something like 4 small units for the particle system and rename the object to LeafParticle.
+    </p>
+    <p>
+      Particle systems need a particle with we already have and an emiter geometry, that we will make now using a plane. To make the plane put the cursor ove one face of a stone pillar and add a plane, merge its vertices at center so we end up with one vertex and activate face snapping to put it over the surface. Now extrude the vertex several times, when having three or four vertices select them and press f to fill with a face. Once the surface is covered exit edit mode and add the particle system.
+    </p>
+    <p>
+      Set the particle settings to Emitter and press play to see the default particles being emitted, set the frame start to 0 and frame end to 0 so the particles appear at once at frame 0 and disable physics by setting physics type to none. Set the lifetime of the particle to the number of frames in your timeline so they life through all the frames, change the object to the LeafParticle and in the render section change the size and disable ShowEmitter so the emitter surface does not appear in renders.
+    </p>
+    <p>
+      First play with the object scale and scale randomness to have leaves with multiple sizes. In the rotation section randomize the basic rotation and also the phase that is the rotation on the other axis. If the particles are too much inside the geometry modify the LeafParticle in the local view to separate it a little moving it on the y axis. If the particles are inside the plane instead of outside check that the normals are not pointing inwards. Add some more particle systems to the scene creating more planes adding a particle system and using the already configured particle settings.
+    </p>
+  </li>
+  <li>
+    Glyphs <input type="checkbox" checked onClick="return false;" />
+    <p>
+      To make the glyphs we will use a technique similar to the one for the vines, put the 3d cursor in a wall and activate face snapping. Add a plane, enter edit mode and select mesh merge at center to get a single vertex, extrude the vertex to form a glyph. To make a second glyph just duplicate the vertex with shift + d, move it to a new place and extrude it.
+    </p>
+    <p>
+      Once finished add a skin modifier, the thickness of the skin modifier is affected by the vertices data Mean Radius X and Y those can be seen in edit mode and can also be changed in edit mode with the vertices selected by pressing ctrl + a. If you have made a second separated glyph the skin modifier needs to mark a vertex as root to work so select a vertex and press make root in the modifier.
+    </p>
+  </li>
+  <li>
+    Materials <input type="checkbox" checked onClick="return false;" />
+    <p>
+      We will keep a consistent palette by reusing some colors and changing only its darkness, maintaining the same hue and saturation. Add a dark green for the terrain, name it Green and assing it to the leafs and the original leaf particle for the particles. Create a new stone material for the stone elements and make it a little beige, to assign it to several objects select them and select last an object that has the material already and select link materials from the link menu.
+    </p>
+    <p>
+      Now for the tiles use the stone material but press the duplicate material button, rename it to Tile and make the color darker without changing the color wheel, do the same with the rocks a little darker and with the tree trunks even darker. For the glyphs select the shader material principled BSDF with an emission shader and a very saturated orange color with a strength of 20. For the water create a bright blue material, and give it the physical properties of the water IOR 1.333, almost full transmission 0.8 and roughness 0.05.
+    </p>
+  </li>
+  <li>
+    Baking <input type="checkbox" checked onClick="return false;" />
+    <p>
+      Baking the illumination to a texture will make the exact result seen in Blender available, with the downside of not having lights so rotating the scene will not change the effect of the light. Start by making a copy of the scene and leave the original aside as we will heavily modify the scene only for baking purposes. We need to optimize, unwrap and bake the scene.
+    </p>
+    <p>
+      First optimize by deleteing as much non-visible faces as possible, select one object and use the local view "/" to hide the rest of the scene optimize it and go back. If part of an object is inside another it is not important as it will not be drawn. If we have link duplicates we need to make them single again because otherwise they will share uv coordinates, select all the objects and use the option Make Single User (Objects & Data) from the Object relations menu (note that we could unwrap first to have less unwraping work later). Also try to fix face orientation normals because by default thee.js will only draw external faces, check them with the face orientation overlay and flip the normals or calculate outside on the red ones. They usually get flipped when extruding on the wrong direction. Another common problem that shows when unwrapping is the relative size of objects is wrong this is caused by not applying scale transformations so apply scale for all objects.
+    </p>
+    <p>
+      Now start the unwrap also using local view "/" to unwrap each object by manually marking seams as it is an origami and doing unwrap to see the result in the unwrap view by selecting all faces and unwrapping, we are aiming for connected islands. Then we will scale and rotate it to organize so it fits the full scene texture, do not try to put them inside at first. Keep them separated and afterwards we will try to fit everything inside the texture. After scaling and rotating the different unwrapped objects we use the overlay "display stretch area" in the unwrap view to see that their related sizes is ok, the aim with this tool is that they have a similar color everything blue tones, or yellow tones for example. For things like the rocks (there are too many) use the smart unwrap, also make sure the UV Sync Selection button is active so you can select faces in both the uv editor and the viewport, also use ctrl + l during the scaling and rotating to select connected islands. We will add a collection named emissions to avoid baking the objects with emissive materials (we will use shaders and not textures in three.js for those). Try to put the seams on the back of the object (the side not facing the camera), that way if there is some distortion on the texture it will be less visible.
+    </p>
+    <p>
+      Once everything is the same relative proportions (color) and fit on the texture we will start the baking. First add an image in the UV view named baked with a size of 4096px x 4096px (2048 would also be enough), a white color without alpha, blank type and 32 bit float not tiled it will be huge so zoom out. We will bake the scene inside that texture, first save it in a separate file with image save as and use Radiance HDR so it has the maximum detail we will use it to generate other types afterwards. To tell Blender in which texture it has to bake each object we have to assign the texture to its material in the shader editor view (check that the use nodes checkbox is active). In that view create a image texture node (texture menu) and set it to our image that we named "baked", blender does not need it connected only that the node exists in the material and it is active. 
+    </p>
+      Now go to render properties tab, and open the bake section. Set the margin to 16 px, this is the overflow of objects when baking and disable clear image so we can bake one object at a time without clearing the texture each time also view from active camera and extend on bake margin type. On the sampling section reduce the samples so it takes a reasonable time to bake things (e.g: 256) also deactivate denoising to avoid problems (we will apply it later), press the bake button for the selected object and wait until it shows on the texture save the image if the result is good or reload it if you want to repeat the baking of the objects.
+    <p>
+      To export the image and get good results we have to fix three things, first there is no color management being done, second there is no denoising and third the format of the image is not good for three.js we need SRGB encoding. Blender usually uses a color manager named Filmic when rendering but not when baking so we will render the texture through the default renderer to get color management and also denoising. Use the compositor view with the checkbox use nodes for this, the current output node in this view is what will appear when doing a render with Blender. Add a new node of type Input Image and choose our "baked" image, take its output link it to the composite you will also need to mute the original "Render Layers" node by selecting it and pressing "m". Do a render with Blender and it will show the rendered texture with Filmic applied, add a denoise node in the middle and it will also have denoising. Change the resolution of the render to the size of the image so the render is done with the correct resolution (4096px x 4096px) and we can use that image inside three.js. Go to image save and save it as jpg.
+    </p>
+    <p>
+      We have exported the texture and the last thing we have to do is also export the model. We can export it like it is as gltf format (binary), include only selected objects with +Y Up and UVs and deactivate the materials as we will make new ones in three.js to assign them the texture. Load the scene and the texture as usual in R3F, create a MeshBasicMaterial with the texture and traverse the scene to apply it to all the objects each one will take its part of the texture using its uv coordinates, set flyY property of the texture to false or you will get strange results. The result will be good but not with the exact colors, we can fix this by setting the property colorSpace to THREE.SRGBColorSpace on the texture. Also we want a different material (MeshBasicMaterial) for the emissive objects, we can fix this by giving a name to the emissive objects in blender to be able to target them by name in three.js, then assign the different material to the objects with that names afterwards.
+    </p>
+    <p>
+      Now we have the scene with its texture working, but if we measure the performance for example with spector.js you will see that a lot of draw calls are done to draw the scene (object by object). We can improve the performance a lot if we merge all objects into a single object before exporting in Blender, to do this select everything but the emissions collection duplicate it with shift + d and move it to a new "merged" collection, select everything from that collection and press Ctrl + J to join everything into a single object. Now when exporting export only the merged and emissions collections and there will be only one object per material, name it "baked" so we can target it by name to apply the texture in three.js.
+    </p>
+  </li>
+</ul>
+</body>
+</html>
